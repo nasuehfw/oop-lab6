@@ -118,7 +118,7 @@
 % Set default values using class commands
 \ministry{Міністерство освіти і науки України}
 %\worktype{Курсова робота}
-\worktype{Лабораторна робота №5}
+\worktype{Лабораторна робота №6}
 
 % =================================================================
 % 					Behavior configuration

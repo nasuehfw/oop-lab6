@@ -1,0 +1,51 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{c+cm}{/*}
+\PYG{c+cm}{ * Copyright (c) 2026. Anastasiia Gorbunova}
+\PYG{c+cm}{ * National University \PYGZdq{}Odesa Polytechnic\PYGZdq{}}
+\PYG{c+cm}{ *}
+\PYG{c+cm}{ * Licensed under the Apache License, Version 2.0 (the \PYGZdq{}License\PYGZdq{});}
+\PYG{c+cm}{ * you may not use this file except in compliance with the License.}
+\PYG{c+cm}{ * You may obtain a copy of the License at}
+\PYG{c+cm}{ *}
+\PYG{c+cm}{ *     http://apache.org}
+\PYG{c+cm}{ */}
+\PYG{k+kn}{package}\PYG{+w}{ }\PYG{n+nn}{ad251.gorbunova}\PYG{p}{;}
+
+\PYG{c+cm}{/**}
+\PYG{c+cm}{ * Головний керуючий клас програми (Точка входу).}
+\PYG{c+cm}{ * Виконує координацію роботи обох секцій лабораторної роботи та демонструє}
+\PYG{c+cm}{ * побудову динамічних CLI\PYGZhy{}таблиць на основі об\PYGZsq{}єктних моделей.}
+\PYG{c+cm}{ * }
+\PYG{c+cm}{ * @author Анастасія Горбунова}
+\PYG{c+cm}{ * @version 6.0 25 Oct 2026}
+\PYG{c+cm}{ */}
+\PYG{k+kd}{public}\PYG{+w}{ }\PYG{k+kd}{class} \PYG{n+nc}{Main}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+
+\PYG{+w}{    }\PYG{c+cm}{/**}
+\PYG{c+cm}{     * Точка входу в систему. Формує структурований псевдотабличний лог.}
+\PYG{c+cm}{     * }
+\PYG{c+cm}{     * @param args аргументи командного рядка CLI}
+\PYG{c+cm}{     */}
+\PYG{+w}{    }\PYG{k+kd}{public}\PYG{+w}{ }\PYG{k+kd}{static}\PYG{+w}{ }\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{main}\PYG{p}{(}\PYG{n}{String}\PYG{o}{[]}\PYG{+w}{ }\PYG{n}{args}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{print}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}=== Лабораторна робота №6 ===\PYGZbs{}n\PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{        }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{print}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Тема: Основи роботи з масивами у Java.\PYGZbs{}n\PYGZbs{}n\PYGZdq{}}\PYG{p}{);}
+
+\PYG{+w}{        }\PYG{c+c1}{// =====================================================================}
+\PYG{+w}{        }\PYG{c+c1}{// 1. ЗАГАЛЬНА ПРАКТИЧНА ЧАСТИНА}
+\PYG{+w}{        }\PYG{c+c1}{// =====================================================================}
+\PYG{+w}{        }\PYG{c+c1}{// Обробка загального практичного завдання}
+\PYG{+w}{        }\PYG{n}{StudentAnalytics}\PYG{+w}{ }\PYG{n}{studentService}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{StudentAnalytics}\PYG{p}{();}
+\PYG{+w}{        }\PYG{n}{studentService}\PYG{p}{.}\PYG{n+na}{runAnalysis}\PYG{p}{();}
+\PYG{+w}{        }
+\PYG{+w}{        }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{print}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{        }
+\PYG{+w}{        }\PYG{c+c1}{// =====================================================================}
+\PYG{+w}{        }\PYG{c+c1}{// 2. ІНДИВІДУАЛЬНЕ ЗАВДАННЯ: ВАРІАНТ №7 (Облік ваги фруктів у кошику)}
+\PYG{+w}{        }\PYG{c+c1}{// =====================================================================}
+\PYG{+w}{        }\PYG{c+c1}{// Обробка індивідуального Варіанту №7}
+\PYG{+w}{        }\PYG{n}{FruitAnalytics}\PYG{+w}{ }\PYG{n}{fruitService}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{FruitAnalytics}\PYG{p}{();}
+\PYG{+w}{        }\PYG{n}{fruitService}\PYG{p}{.}\PYG{n+na}{runAnalysis}\PYG{p}{();}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{       }
+\PYG{p}{\PYGZcb{}}
+\end{MintedVerbatim}

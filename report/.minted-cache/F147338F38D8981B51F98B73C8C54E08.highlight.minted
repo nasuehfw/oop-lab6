@@ -1,0 +1,173 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{c+cm}{/*}
+\PYG{c+cm}{ * Copyright (c) 2026. Anastasiia Gorbunova}
+\PYG{c+cm}{ * National University \PYGZdq{}Odesa Polytechnic\PYGZdq{}}
+\PYG{c+cm}{ *}
+\PYG{c+cm}{ * Licensed under the Apache License, Version 2.0 (the \PYGZdq{}License\PYGZdq{});}
+\PYG{c+cm}{ * you may not use this file except in compliance with the License.}
+\PYG{c+cm}{ * You may obtain a copy of the License at}
+\PYG{c+cm}{ *}
+\PYG{c+cm}{ *     http://apache.org}
+\PYG{c+cm}{ */}
+\PYG{k+kn}{package}\PYG{+w}{ }\PYG{n+nn}{ad251.gorbunova}\PYG{p}{;}
+
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{java.util.Arrays}\PYG{p}{;}
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{java.util.Random}\PYG{p}{;}
+
+\PYG{c+cm}{/**}
+\PYG{c+cm}{ * Клас\PYGZhy{}сервіс для обліку та статистичного аналізу ваги фруктів у кошику.}
+\PYG{c+cm}{ * Реалізує контракт індивідуального Варіанту №7 за допомогою чистих методів.}
+\PYG{c+cm}{ * }
+\PYG{c+cm}{ * @author Анастасія Горбунова}
+\PYG{c+cm}{ * @version 5.0 25 Oct 2026}
+\PYG{c+cm}{ */}
+\PYG{k+kd}{public}\PYG{+w}{ }\PYG{k+kd}{class} \PYG{n+nc}{FruitAnalytics}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+
+\PYG{+w}{    }\PYG{c+cm}{/**}
+\PYG{c+cm}{     * Запускає повний цикл розрахунку метрик для кошика фруктів}
+\PYG{c+cm}{     * та генерує фінальну CLI\PYGZhy{}таблицю (116 символів).}
+\PYG{c+cm}{     */}
+\PYG{+w}{    }\PYG{k+kd}{public}\PYG{+w}{ }\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{runAnalysis}\PYG{p}{()}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{print}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZhy{}\PYGZhy{}\PYGZhy{} 2. Виконання індивідуального Варіанту №7 (Вага фруктів у кошику) \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{        }\PYG{n}{String}\PYG{+w}{ }\PYG{n}{tableSeparator}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}+\PYGZdq{}}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZhy{}\PYGZdq{}}\PYG{p}{.}\PYG{n+na}{repeat}\PYG{p}{(}\PYG{l+m+mi}{112}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}+\PYGZdq{}}\PYG{p}{;}
+\PYG{+w}{        }
+\PYG{+w}{        }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{N}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{8}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k+kt}{double}\PYG{o}{[]}\PYG{+w}{ }\PYG{n}{weights}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{k+kt}{double}\PYG{o}{[}\PYG{n}{N}\PYG{o}{]}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{Random}\PYG{+w}{ }\PYG{n}{rand}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{Random}\PYG{p}{();}
+
+\PYG{+w}{        }\PYG{c+c1}{// Заповнення випадковими значеннями ваги від 50.0 до 350.0 грамів}
+\PYG{+w}{        }\PYG{k}{for}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{N}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{i}\PYG{o}{++}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{n}{weights}\PYG{o}{[}\PYG{n}{i}\PYG{o}{]}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{50.0}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{rand}\PYG{p}{.}\PYG{n+na}{nextDouble}\PYG{p}{()}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{l+m+mf}{300.0}\PYG{p}{);}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{        }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{print}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Вміст кошика (початковий масив ваг у грамах):\PYGZbs{}n[ \PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{        }\PYG{k}{for}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{weights}\PYG{p}{.}\PYG{n+na}{length}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{i}\PYG{o}{++}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZpc{}.1f\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{weights}\PYG{o}{[}\PYG{n}{i}\PYG{o}{]}\PYG{p}{);}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{i}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{weights}\PYG{p}{.}\PYG{n+na}{length}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{print}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}; \PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{print}\PYG{p}{(}\PYG{l+s}{\PYGZdq{} ]\PYGZbs{}n\PYGZbs{}n\PYGZdq{}}\PYG{p}{);}
+
+\PYG{+w}{        }\PYG{c+c1}{// Обчислення показників через виклики методів (вимоги контракту)}
+\PYG{+w}{        }\PYG{k+kt}{double}\PYG{+w}{ }\PYG{n}{totalWeight}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{calculateSum}\PYG{p}{(}\PYG{n}{weights}\PYG{p}{);}
+\PYG{+w}{        }\PYG{k+kt}{double}\PYG{+w}{ }\PYG{n}{averageWeight}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{calculateAverage}\PYG{p}{(}\PYG{n}{weights}\PYG{p}{);}
+\PYG{+w}{        }\PYG{k+kt}{double}\PYG{+w}{ }\PYG{n}{maxWeight}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{findMax}\PYG{p}{(}\PYG{n}{weights}\PYG{p}{);}
+\PYG{+w}{        }\PYG{k+kt}{double}\PYG{+w}{ }\PYG{n}{minWeight}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{findMin}\PYG{p}{(}\PYG{n}{weights}\PYG{p}{);}
+\PYG{+w}{        }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{elementsAboveAverage}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{countAboveAverage}\PYG{p}{(}\PYG{n}{weights}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{averageWeight}\PYG{p}{);}
+
+\PYG{+w}{        }\PYG{c+c1}{// Побудова таблиці результатів Варіанту №7}
+\PYG{+w}{        }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{println}\PYG{p}{(}\PYG{n}{tableSeparator}\PYG{p}{);}
+\PYG{+w}{        }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}| \PYGZpc{}\PYGZhy{}22s | \PYGZpc{}\PYGZhy{}14s | \PYGZpc{}\PYGZhy{}68s |\PYGZpc{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }
+\PYG{+w}{                }\PYG{l+s}{\PYGZdq{}Статистичний параметр\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Значення\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Акумульована метрика / Опис розрахунку\PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{        }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{println}\PYG{p}{(}\PYG{n}{tableSeparator}\PYG{p}{);}
+\PYG{+w}{        }
+\PYG{+w}{        }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}| \PYGZpc{}\PYGZhy{}22s | \PYGZpc{}\PYGZhy{}14.2f | \PYGZpc{}\PYGZhy{}68s |\PYGZpc{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }
+\PYG{+w}{                }\PYG{l+s}{\PYGZdq{}Загальна вага кошика\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{totalWeight}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Сумарна маса всіх фруктів, накопичена через цикл\PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{        }
+\PYG{+w}{        }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}| \PYGZpc{}\PYGZhy{}22s | \PYGZpc{}\PYGZhy{}14.2f | \PYGZpc{}\PYGZhy{}68s |\PYGZpc{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }
+\PYG{+w}{                }\PYG{l+s}{\PYGZdq{}Середня вага фрукта\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{averageWeight}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Середнє арифметичне значення (Сума / Кількість елементів)\PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{        }
+\PYG{+w}{        }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}| \PYGZpc{}\PYGZhy{}22s | \PYGZpc{}\PYGZhy{}14.2f | \PYGZpc{}\PYGZhy{}68s |\PYGZpc{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }
+\PYG{+w}{                }\PYG{l+s}{\PYGZdq{}Максимальна вага\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{maxWeight}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Найбільший елемент масиву, знайдений лінійним пошуком\PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{        }
+\PYG{+w}{        }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}| \PYGZpc{}\PYGZhy{}22s | \PYGZpc{}\PYGZhy{}14.2f | \PYGZpc{}\PYGZhy{}68s |\PYGZpc{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }
+\PYG{+w}{                }\PYG{l+s}{\PYGZdq{}Мінімальна вага\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{minWeight}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Найменший елемент масиву, знайдений лінійним пошуком\PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{        }
+\PYG{+w}{        }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}| \PYGZpc{}\PYGZhy{}22s | \PYGZpc{}\PYGZhy{}14s | \PYGZpc{}\PYGZhy{}68s |\PYGZpc{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }
+\PYG{+w}{                }\PYG{l+s}{\PYGZdq{}Більше середнього\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{elementsAboveAverage}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Кількість фруктів, маса яких перевищує середній показник\PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{        }
+\PYG{+w}{        }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{println}\PYG{p}{(}\PYG{n}{tableSeparator}\PYG{p}{);}
+\PYG{+w}{        }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{print}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{);}
+
+\PYG{+w}{        }\PYG{c+c1}{// Демонстрація сортування масиву бібліотечним методом}
+\PYG{+w}{        }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{print}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZhy{}\PYGZhy{}\PYGZhy{} 3. Демонстрація сортування масиву (Arrays.sort) \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{        }\PYG{n}{Arrays}\PYG{p}{.}\PYG{n+na}{sort}\PYG{p}{(}\PYG{n}{weights}\PYG{p}{);}
+\PYG{+w}{        }
+\PYG{+w}{        }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{print}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Відсортований кошик (у порядку зростання маси):\PYGZbs{}n[ \PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{        }\PYG{k}{for}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{weights}\PYG{p}{.}\PYG{n+na}{length}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{i}\PYG{o}{++}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZpc{}.1f\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{weights}\PYG{o}{[}\PYG{n}{i}\PYG{o}{]}\PYG{p}{);}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{i}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{weights}\PYG{p}{.}\PYG{n+na}{length}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{print}\PYG{p}{(}\PYG{l+s}{\PYGZdq{} \PYGZhy{}\PYGZgt{} \PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{print}\PYG{p}{(}\PYG{l+s}{\PYGZdq{} ]\PYGZbs{}n\PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{    }\PYG{c+cm}{/**}
+\PYG{c+cm}{     * Обчислює суму елементів масиву дійсних чисел.}
+\PYG{c+cm}{     * }
+\PYG{c+cm}{     * @param array масив значень}
+\PYG{c+cm}{     * @return сумарне значення}
+\PYG{c+cm}{     */}
+\PYG{+w}{    }\PYG{k+kd}{public}\PYG{+w}{ }\PYG{k+kd}{static}\PYG{+w}{ }\PYG{k+kt}{double}\PYG{+w}{ }\PYG{n+nf}{calculateSum}\PYG{p}{(}\PYG{k+kt}{double}\PYG{o}{[]}\PYG{+w}{ }\PYG{n}{array}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{k+kt}{double}\PYG{+w}{ }\PYG{n}{sum}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{for}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{double}\PYG{+w}{ }\PYG{n}{value}\PYG{+w}{ }\PYG{p}{:}\PYG{+w}{ }\PYG{n}{array}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{n}{sum}\PYG{+w}{ }\PYG{o}{+=}\PYG{+w}{ }\PYG{n}{value}\PYG{p}{;}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{k}{return}\PYG{+w}{ }\PYG{n}{sum}\PYG{p}{;}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{    }\PYG{c+cm}{/**}
+\PYG{c+cm}{     * Обчислює середнє арифметичне значення масиву.}
+\PYG{c+cm}{     * }
+\PYG{c+cm}{     * @param array масив значень}
+\PYG{c+cm}{     * @return середнє значення}
+\PYG{c+cm}{     */}
+\PYG{+w}{    }\PYG{k+kd}{public}\PYG{+w}{ }\PYG{k+kd}{static}\PYG{+w}{ }\PYG{k+kt}{double}\PYG{+w}{ }\PYG{n+nf}{calculateAverage}\PYG{p}{(}\PYG{k+kt}{double}\PYG{o}{[]}\PYG{+w}{ }\PYG{n}{array}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{array}\PYG{p}{.}\PYG{n+na}{length}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{k}{return}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{k}{return}\PYG{+w}{ }\PYG{n}{calculateSum}\PYG{p}{(}\PYG{n}{array}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{n}{array}\PYG{p}{.}\PYG{n+na}{length}\PYG{p}{;}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{    }\PYG{c+cm}{/**}
+\PYG{c+cm}{     * Знаходить максимальний елемент масиву.}
+\PYG{c+cm}{     * }
+\PYG{c+cm}{     * @param array масив значень}
+\PYG{c+cm}{     * @return максимальне значення}
+\PYG{c+cm}{     */}
+\PYG{+w}{    }\PYG{k+kd}{public}\PYG{+w}{ }\PYG{k+kd}{static}\PYG{+w}{ }\PYG{k+kt}{double}\PYG{+w}{ }\PYG{n+nf}{findMax}\PYG{p}{(}\PYG{k+kt}{double}\PYG{o}{[]}\PYG{+w}{ }\PYG{n}{array}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{k+kt}{double}\PYG{+w}{ }\PYG{n}{max}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{array}\PYG{o}{[}\PYG{l+m+mi}{0}\PYG{o}{]}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{for}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{array}\PYG{p}{.}\PYG{n+na}{length}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{i}\PYG{o}{++}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{array}\PYG{o}{[}\PYG{n}{i}\PYG{o}{]}\PYG{+w}{ }\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{max}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{n}{max}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{array}\PYG{o}{[}\PYG{n}{i}\PYG{o}{]}\PYG{p}{;}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{k}{return}\PYG{+w}{ }\PYG{n}{max}\PYG{p}{;}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{    }\PYG{c+cm}{/**}
+\PYG{c+cm}{     * Знаходить мінімальний елемент масиву.}
+\PYG{c+cm}{     * }
+\PYG{c+cm}{     * @param array масив значень}
+\PYG{c+cm}{     * @return мінімальне значення}
+\PYG{c+cm}{     */}
+\PYG{+w}{    }\PYG{k+kd}{public}\PYG{+w}{ }\PYG{k+kd}{static}\PYG{+w}{ }\PYG{k+kt}{double}\PYG{+w}{ }\PYG{n+nf}{findMin}\PYG{p}{(}\PYG{k+kt}{double}\PYG{o}{[]}\PYG{+w}{ }\PYG{n}{array}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{k+kt}{double}\PYG{+w}{ }\PYG{n}{min}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{array}\PYG{o}{[}\PYG{l+m+mi}{0}\PYG{o}{]}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{for}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{array}\PYG{p}{.}\PYG{n+na}{length}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{i}\PYG{o}{++}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{array}\PYG{o}{[}\PYG{n}{i}\PYG{o}{]}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{min}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{n}{min}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{array}\PYG{o}{[}\PYG{n}{i}\PYG{o}{]}\PYG{p}{;}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{k}{return}\PYG{+w}{ }\PYG{n}{min}\PYG{p}{;}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{    }\PYG{c+cm}{/**}
+\PYG{c+cm}{     * Підраховує елементи, які більші за середнє значення.}
+\PYG{c+cm}{     * }
+\PYG{c+cm}{     * @param array масив значень}
+\PYG{c+cm}{     * @param average середнє значення}
+\PYG{c+cm}{     * @return кількість елементів}
+\PYG{c+cm}{     */}
+\PYG{+w}{    }\PYG{k+kd}{public}\PYG{+w}{ }\PYG{k+kd}{static}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n+nf}{countAboveAverage}\PYG{p}{(}\PYG{k+kt}{double}\PYG{o}{[]}\PYG{+w}{ }\PYG{n}{array}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{double}\PYG{+w}{ }\PYG{n}{average}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{count}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{for}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{double}\PYG{+w}{ }\PYG{n}{value}\PYG{+w}{ }\PYG{p}{:}\PYG{+w}{ }\PYG{n}{array}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{value}\PYG{+w}{ }\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{average}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{n}{count}\PYG{o}{++}\PYG{p}{;}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{k}{return}\PYG{+w}{ }\PYG{n}{count}\PYG{p}{;}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{MintedVerbatim}

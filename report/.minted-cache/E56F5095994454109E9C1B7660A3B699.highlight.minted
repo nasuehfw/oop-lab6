@@ -1,0 +1,110 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{c+cm}{/*}
+\PYG{c+cm}{ * Copyright (c) 2026. Anastasiia Gorbunova}
+\PYG{c+cm}{ * National University \PYGZdq{}Odesa Polytechnic\PYGZdq{}}
+\PYG{c+cm}{ *}
+\PYG{c+cm}{ * Licensed under the Apache License, Version 2.0 (the \PYGZdq{}License\PYGZdq{});}
+\PYG{c+cm}{ * you may not use this file except in compliance with the License.}
+\PYG{c+cm}{ * You may obtain a copy of the License at}
+\PYG{c+cm}{ *}
+\PYG{c+cm}{ *     http://apache.org}
+\PYG{c+cm}{ */}
+\PYG{k+kn}{package}\PYG{+w}{ }\PYG{n+nn}{ad251.gorbunova}\PYG{p}{;}
+
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{java.util.Random}\PYG{p}{;}
+
+\PYG{c+cm}{/**}
+\PYG{c+cm}{ * Клас\PYGZhy{}сервіс для обробки та аналізу оцінок студентів групи.}
+\PYG{c+cm}{ * Реалізує алгоритми пошуку екстремумів, середнього балу та}
+\PYG{c+cm}{ * фільтрації для одновимірних масивів цілих чисел (int[]).}
+\PYG{c+cm}{ * }
+\PYG{c+cm}{ * @author Анастасія Горбунова}
+\PYG{c+cm}{ * @version 5.0 25 Oct 2026}
+\PYG{c+cm}{ */}
+\PYG{k+kd}{public}\PYG{+w}{ }\PYG{k+kd}{class} \PYG{n+nc}{StudentAnalytics}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+
+\PYG{+w}{    }\PYG{c+cm}{/**}
+\PYG{c+cm}{     * Запускає повний цикл аналізу результатів тестування студентів}
+\PYG{c+cm}{     * та формує CLI\PYGZhy{}таблицю фіксованої ширини (116 символів).}
+\PYG{c+cm}{     */}
+\PYG{+w}{    }\PYG{k+kd}{public}\PYG{+w}{ }\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{runAnalysis}\PYG{p}{()}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{print}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZhy{}\PYGZhy{}\PYGZhy{} 1. Демонстрація загального завдання (Результати тестування) \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{        }\PYG{n}{String}\PYG{+w}{ }\PYG{n}{tableSeparator}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}+\PYGZdq{}}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZhy{}\PYGZdq{}}\PYG{p}{.}\PYG{n+na}{repeat}\PYG{p}{(}\PYG{l+m+mi}{112}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}+\PYGZdq{}}\PYG{p}{;}
+\PYG{+w}{        }
+\PYG{+w}{        }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{N}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{10}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k+kt}{int}\PYG{o}{[]}\PYG{+w}{ }\PYG{n}{scores}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{o}{[}\PYG{n}{N}\PYG{o}{]}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{Random}\PYG{+w}{ }\PYG{n}{rand}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{Random}\PYG{p}{();}
+
+\PYG{+w}{        }\PYG{c+c1}{// Заповнення масиву оцінками від 0 до 100}
+\PYG{+w}{        }\PYG{k}{for}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{N}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{i}\PYG{o}{++}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{n}{scores}\PYG{o}{[}\PYG{n}{i}\PYG{o}{]}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{rand}\PYG{p}{.}\PYG{n+na}{nextInt}\PYG{p}{(}\PYG{l+m+mi}{101}\PYG{p}{);}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{        }\PYG{c+c1}{// Виведення початкового стану масиву}
+\PYG{+w}{        }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{print}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Оцінки групи (початковий масив):\PYGZbs{}n[ \PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{        }\PYG{k}{for}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{scores}\PYG{p}{.}\PYG{n+na}{length}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{i}\PYG{o}{++}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{print}\PYG{p}{(}\PYG{n}{scores}\PYG{o}{[}\PYG{n}{i}\PYG{o}{]}\PYG{p}{);}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{i}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{scores}\PYG{p}{.}\PYG{n+na}{length}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{print}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}, \PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{print}\PYG{p}{(}\PYG{l+s}{\PYGZdq{} ]\PYGZbs{}n\PYGZbs{}n\PYGZdq{}}\PYG{p}{);}
+
+\PYG{+w}{        }\PYG{c+c1}{// Алгоритмічний пошук показників успішності}
+\PYG{+w}{        }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{max}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{scores}\PYG{o}{[}\PYG{l+m+mi}{0}\PYG{o}{]}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{min}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{scores}\PYG{o}{[}\PYG{l+m+mi}{0}\PYG{o}{]}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{sum}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{+w}{        }
+\PYG{+w}{        }\PYG{k}{for}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{score}\PYG{+w}{ }\PYG{p}{:}\PYG{+w}{ }\PYG{n}{scores}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{n}{sum}\PYG{+w}{ }\PYG{o}{+=}\PYG{+w}{ }\PYG{n}{score}\PYG{p}{;}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{score}\PYG{+w}{ }\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{max}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{n}{max}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{score}\PYG{p}{;}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{score}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{min}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{n}{min}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{score}\PYG{p}{;}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }
+\PYG{+w}{        }\PYG{k+kt}{double}\PYG{+w}{ }\PYG{n}{average}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{double}\PYG{p}{)}\PYG{+w}{ }\PYG{n}{sum}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{n}{N}\PYG{p}{;}
+
+\PYG{+w}{        }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{aboveAverageCount}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{for}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{score}\PYG{+w}{ }\PYG{p}{:}\PYG{+w}{ }\PYG{n}{scores}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{score}\PYG{+w}{ }\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{average}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{n}{aboveAverageCount}\PYG{o}{++}\PYG{p}{;}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{        }\PYG{k+kt}{boolean}\PYG{+w}{ }\PYG{n}{hasPerfectScore}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k+kc}{false}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{for}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{score}\PYG{+w}{ }\PYG{p}{:}\PYG{+w}{ }\PYG{n}{scores}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{score}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{l+m+mi}{100}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{n}{hasPerfectScore}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k+kc}{true}\PYG{p}{;}
+\PYG{+w}{                }\PYG{k}{break}\PYG{p}{;}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{        }\PYG{c+c1}{// Побудова таблиці результатів загальної практичної частини}
+\PYG{+w}{        }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{println}\PYG{p}{(}\PYG{n}{tableSeparator}\PYG{p}{);}
+\PYG{+w}{        }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}| \PYGZpc{}\PYGZhy{}22s | \PYGZpc{}\PYGZhy{}14s | \PYGZpc{}\PYGZhy{}68s |\PYGZpc{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }
+\PYG{+w}{                }\PYG{l+s}{\PYGZdq{}Параметр групи\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Значення\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Опис розрахунку метрики успішності\PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{        }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{println}\PYG{p}{(}\PYG{n}{tableSeparator}\PYG{p}{);}
+\PYG{+w}{        }
+\PYG{+w}{        }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}| \PYGZpc{}\PYGZhy{}22s | \PYGZpc{}\PYGZhy{}14s | \PYGZpc{}\PYGZhy{}68s |\PYGZpc{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }
+\PYG{+w}{                }\PYG{l+s}{\PYGZdq{}Найвищий бал\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{max}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Максимальна оцінка серед студентів групи\PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{        }
+\PYG{+w}{        }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}| \PYGZpc{}\PYGZhy{}22s | \PYGZpc{}\PYGZhy{}14s | \PYGZpc{}\PYGZhy{}68s |\PYGZpc{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }
+\PYG{+w}{                }\PYG{l+s}{\PYGZdq{}Найнижчий бал\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{min}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Мінімальна оцінка серед студентів групи\PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{        }
+\PYG{+w}{        }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}| \PYGZpc{}\PYGZhy{}22s | \PYGZpc{}\PYGZhy{}14s | \PYGZpc{}\PYGZhy{}68s |\PYGZpc{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }
+\PYG{+w}{                }\PYG{l+s}{\PYGZdq{}Середній бал\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{average}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Середнє арифметичне значення по групі\PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{        }
+\PYG{+w}{        }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}| \PYGZpc{}\PYGZhy{}22s | \PYGZpc{}\PYGZhy{}14s | \PYGZpc{}\PYGZhy{}68s |\PYGZpc{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }
+\PYG{+w}{                }\PYG{l+s}{\PYGZdq{}Вище середнього\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{aboveAverageCount}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Кількість студентів, що перевищили середній бал\PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{        }
+\PYG{+w}{        }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}| \PYGZpc{}\PYGZhy{}22s | \PYGZpc{}\PYGZhy{}14s | \PYGZpc{}\PYGZhy{}68s |\PYGZpc{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }
+\PYG{+w}{                }\PYG{l+s}{\PYGZdq{}Ідеальний бал (100)\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{hasPerfectScore}\PYG{+w}{ }\PYG{o}{?}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Є студент(и)\PYGZdq{}}\PYG{+w}{ }\PYG{p}{:}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Немає\PYGZdq{}}\PYG{p}{),}\PYG{+w}{ }
+\PYG{+w}{                }\PYG{l+s}{\PYGZdq{}Перевірка наявності хоча б одного максимального результату\PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{        }
+\PYG{+w}{        }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{println}\PYG{p}{(}\PYG{n}{tableSeparator}\PYG{p}{);}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{MintedVerbatim}
