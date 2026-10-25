@@ -1,0 +1,103 @@
+%
+%   В цьому окремому файлі визначимо власні команди,
+%   щоб не засмічувати головний файл
+%
+
+
+%                        Custom colors
+% --------------------------------------------------------------
+\definecolor{grey50}{HTML}{FAFAFA}
+\definecolor{bluegray400}{HTML}{78909C}
+
+%                      Custom text commands
+% --------------------------------------------------------------
+\newcommand{\alert}[1]{{\color{red} #1}}
+\newcommand{\Alert}[1]{\textbf{\alert{#1}}}
+
+\newcommand{\hl}[1]{\textit{#1}}
+\newcommand{\Hl}[1]{\textbf{\textit{#1}}}
+\newcommand{\HL}[1]{\textbf{#1}}
+
+\newcommand{\code}[1]{\texttt{#1}}
+
+
+
+%                    JS code formatting with minted
+% --------------------------------------------------------------
+% \newenvironment{longlisting}{\captionsetup{type=listing}}{}
+
+% Define line numbering style
+% \renewcommand\theFancyVerbLine{\color{bluegray400} \small \arabic{FancyVerbLine}}
+
+% \js- команда для форматування коду прямо в рядку тексту.
+% \NewDocumentCommand{\js}{v}{%
+%  \usemintedstyle{friendly}%
+%  \mintinline{js}|#1|
+%}
+
+% Оточеня jscode для форматоування коду як лістингу
+% \newenvironment{jscode}
+%    {\VerbatimEnvironment
+%    \usemintedstyle{friendly}
+%     \begin{minted}[breaklines, obeytabs, tabsize=4, xleftmargin=24pt, linenos, bgcolor=grey50]{js}}
+%    {\end{minted}}
+
+% Команда для включення вихідних файлів програм мовою c++
+% \newcommand{\inputjs}[1]{%
+%     \inputminted[breaklines, tabsize=4, obeytabs, xleftmargin=24pt,linenos]{js}{#1}%
+%}  
+
+%                    Rust code formatting with minted
+% --------------------------------------------------------------
+\newenvironment{longlisting}{\captionsetup{type=listing}}{}
+
+% Define line numbering style
+\renewcommand\theFancyVerbLine{\color{bluegray400} \small \arabic{FancyVerbLine}}
+
+% \rs- команда для форматування коду прямо в рядку тексту.
+\NewDocumentCommand{\rs}{v}{%
+    %\usemintedstyle{friendly}%
+    \usemintedstyle{vs}%
+    \mintinline{rust}|#1|
+}
+
+\newenvironment{cppcode}
+{\hrule\vspace{4pt}
+    \VerbatimEnvironment%
+    %\usemintedstyle{tango}%
+    \usemintedstyle{vs}%
+    \fontsize{10pt}{12pt}\selectfont%
+    \setlength\partopsep{-\topsep}%
+    \begin{minted}[breaklines, obeytabs, tabsize=4]{cpp}}
+    {\end{minted}\vspace{4pt}\hrule}
+
+
+% Команда для включення вихідних файлів програм мовою C++
+\newcommand{\inputcpp}[1]{{% 🛠️ Добавили открывающую скобку тут
+        \usemintedstyle{vs}
+        \fontsize{10pt}{12pt}\selectfont
+        \inputminted[breaklines, obeytabs, tabsize=2]{cpp}{#1}%
+    }} % 🛠️ И закрывающую скобку тут
+
+
+%                    Java code formatting with minted
+% --------------------------------------------------------------
+
+% Команда для автоматического включения файлов Java с мелкими номерами строк и рамками
+\newcommand{\inputjava}[1]{{%
+    \usemintedstyle{vs} % Используем стиль VS, как в C++
+    \fontsize{8pt}{10pt}\selectfont % Размер шрифта самого кода
+    
+    % Локальное переопределяем размер номеров строк ТОЛЬКО внутри этой команды
+    \renewcommand\theFancyVerbLine{\color{bluegray400} \scriptsize \arabic{FancyVerbLine}}%
+    
+    \inputminted[
+        %frame=lines,      % Горизонтальные рамки сверху и снизу
+        %framesep=2mm,     % Отступ кода от рамок
+        baselinestretch=0.9,
+        linenos,          % Включаем нумерацию
+        breaklines,       % Перенос длинных строк
+        tabsize=4         % Табуляция для Java
+    ]{java}{#1}%
+}}
+

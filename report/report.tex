@@ -1,0 +1,79 @@
+﻿%!TeX program = xelatex
+\documentclass{coursework}
+
+% 1. Подключение пакетов (float для [H], minted для кода)
+\usepackage{float}
+\usepackage{csquotes}
+
+\usepackage[cachedir=.minted-cache]{minted} % Нужен для кеширования, быстрее проходит компиляция
+\usepackage{minted}
+\usepackage{listings}
+\usepackage{lipsum}
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage{multirow} % <--- ДОБАВЬТЕ ЭТУ СТРОКУ ДЛЯ ИСПРАВЛЕНИЯ ОШИБКИ Таблицы!
+
+\usepackage{fontspec}
+\setmonofont{Courier New} % задаём моноширинный шрифт
+
+% 2. Затем подключаем файл с вашими кастомными командами
+\input{commands.tex} 
+
+% Настройка библиографии Biber
+%\usepackage[backend=biber,style=gost-numeric,sorting=none]{biblatex}
+%\addbibresource{references.bib}
+
+% Настройки титульного листа
+\university{Національний університет \enquote{Одеська політехніка}}
+\department{Кафедра інформаційних технологій}
+
+\discipline{\enquote{Об’єктно-орієнтоване та подійно-орієнтоване програмування}}
+\title{\enquote{Особливості та призначення інтерфейсів та принципу успадкування}}
+%\variant{7}
+
+\tutor[male]{к т.н., доцент Рудніченко М.Д.}
+\author[male]{Горбунова А.А.}
+\course{II}
+\group{AД-251}
+\speciality{F6}
+\city{ДУОП}
+\year{2026}
+
+\begin{document}
+
+% Элементы титульного листа / Содержания (зависят от реализации класса)
+\maketitle		% титульный лист
+%\makecontents		% содержание
+
+% Подключение модулей пояснительной записки
+% Мета та завдання на лабораторну роботу
+\input{sections/task.tex}
+
+% Теоретичні основи
+\input{sections/theory.tex}
+
+% Опис створення коду лабораторної роботи
+\input{sections/code.tex}
+
+% Лістінги коду
+\input{sections/listings.tex}
+
+% Результати роботи програми
+\input{sections/results.tex}
+
+% Контрольні запитання
+\input{sections/questions.tex}
+
+% Інформаційні ресурси та посилання на вихідний код
+\input{sections/resources.tex}
+
+% Литератупа
+%\makebibliography
+%\input{sections/literature.tex}
+
+% Аппендикс (если нужен)
+%\appendix
+%\input{appendix/appendix.tex}
+
+
+\end{document}

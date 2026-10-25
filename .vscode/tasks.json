@@ -1,0 +1,55 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "1. Сборка и Запуск Java",
+            "type": "shell",
+            "command": "& 'C:\\Program Files\\Java\\jdk-25.0.4.1\\bin\\javac.exe' -encoding UTF-8 -d bin src/ad251/gorbunova/*.java; if ($?) { [Console]::OutputEncoding = [System.Text.Encoding]::UTF8; echo '--- РЕЗУЛЬТАТ ВВИКОНАННЯ ---'; & 'C:\\Program Files\\Java\\jdk-25.0.4.1\\bin\\java.exe' -cp bin ad251.gorbunova.Main }",
+            "options": {
+                "shell": {
+                    "executable": "powershell.exe",
+                    "args": ["-Command"]
+                }
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": false,
+                "clear": true
+            }
+        },
+        {
+            "label": "2. Компиляция отчета LaTeX",
+            "type": "shell",
+            "command": "cd report; xelatex -synctex=1 -interaction=nonstopmode -file-line-error -shell-escape report.tex",
+            "options": {
+                "shell": {
+                    "executable": "powershell.exe",
+                    "args": ["-Command"]
+                }
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared",
+                "showReuseMessage": false,
+                "clear": false
+            }
+        },
+        {
+            "label": "🔥 ПОЛНЫЙ ЦИКЛ: Код + PDF-Отчет",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "1. Сборка и Запуск Java",
+                "2. Компиляция отчета LaTeX"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
